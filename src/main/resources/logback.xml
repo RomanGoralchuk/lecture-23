@@ -24,7 +24,8 @@
     <logger name="org.hibernate" level="DEBUG" />
     <logger name="by.itacademy.javaenterprise.goralchuk.dao.BaseDao" level="DEBUG" />
     <logger name="by.itacademy.javaenterprise.goralchuk.services.BookService" level="DEBUG" />
-    <logger name="by.itacademy.javaenterprise.goralchuk.App" level="INFO" />
+    <logger name="by.itacademy.javaenterprise.goralchuk.App" level="DEBUG" />
+    <logger name="by.itacademy.javaenterprise.goralchuk.aspects.LoggingAspect" level="DEBUG" />
 
     <root level="DEBUG">
         <appender-ref ref="CONSOLE"/>

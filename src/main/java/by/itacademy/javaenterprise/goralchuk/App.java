@@ -12,14 +12,24 @@ public class App {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(SpringConfig.class);
 
-        BookService bookService = context.getBean(BookService.class);
+        BookService bookService = context.getBean("bookService", BookService.class);
         bookService.addBookToDataBase(new Book("NameA", "AuthorA", "eng", 200));
         bookService.addBookToDataBase(new Book("NameB", "AuthorB", "rus", 100));
         bookService.addBookToDataBase(new Book("NameC", "AuthorC", "eng", 50));
         bookService.addBookToDataBase(new Book("NameD", "AuthorA", "fra", 70));
-        log.info("ALL BOOKS:\n {}", bookService.findAllBookFromDatabase());
-        log.info("ALL ENG BOOKS:\n {}", bookService.findAllBookFromDatabaseByLanguage("eng"));
+
+        bookService.findFilterBookByAllParameters("AuthorA", "NameA", "eng");
+        bookService.findAllBookFromDatabase();
+        bookService.findAllBookFromDatabaseByLanguage("eng");
         bookService.removeBookFromDataBaseByAuthor("AuthorA");
-        log.info("ALL BOOKS AFTER DELETION:\n {}", bookService.findAllBookFromDatabase());
+        bookService.removeFromDataBaseById(100);
+
+        try {
+            bookService.getThrowException();
+        } catch (Exception e) {
+            log.error("Exception: {}", e.getMessage());
+        }
+
+        context.close();
     }
 }

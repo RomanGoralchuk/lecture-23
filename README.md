@@ -14,4 +14,6 @@ Home task #23
 
 ### How to run
 1. Start scripts:
-* Looking for the develop branch
+* Start App or:
+* `mvn clean install`
+* `java -jar target/lecture-23-1.0-SNAPSHOT.jar`

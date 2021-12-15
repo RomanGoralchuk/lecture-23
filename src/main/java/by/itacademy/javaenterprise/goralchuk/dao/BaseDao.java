@@ -12,21 +12,25 @@ import java.util.List;
 public class BaseDao<T> {
     private final List<T> list = new ArrayList<>();
 
-    public void add(T t) {
+    public T add(T t) {
         try {
             list.add(t);
             log.debug("The add transaction was successful");
+            return t;
         } catch (Exception e) {
-            log.error("Error ADD transaction {}", e.getMessage(), e);
+            log.error("Error add transaction {}", e.getMessage(), e);
+            return null;
         }
     }
 
-    public void remove(int id) {
+    public int remove(int id) {
         try {
             list.remove(id);
             log.debug("The remove transaction was successful");
+            return id;
         } catch (Exception e) {
             log.error("No such object was found {}", e.getMessage(), e);
+            return 0;
         }
     }
 
