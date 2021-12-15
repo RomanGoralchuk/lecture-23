@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@Slf4j
+@Slf4j(topic = "/ BASE_DAO")
 @Repository
 public class BaseDao<T> {
     private final List<T> list = new ArrayList<>();
@@ -15,26 +15,26 @@ public class BaseDao<T> {
     public void add(T t) {
         try {
             list.add(t);
-            log.debug("The transaction was successful");
-        } catch (Exception e){
-            log.error("Error ADD transaction {}" , e.getMessage(), e);
+            log.debug("The add transaction was successful");
+        } catch (Exception e) {
+            log.error("Error ADD transaction {}", e.getMessage(), e);
         }
     }
 
     public void remove(int id) {
         try {
             list.remove(id);
-            log.debug("The transaction was successful");
-        } catch (Exception e){
-            log.error("No such object was found {}" , e.getMessage(), e);
+            log.debug("The remove transaction was successful");
+        } catch (Exception e) {
+            log.error("No such object was found {}", e.getMessage(), e);
         }
     }
 
     public List<T> findAll() {
         try {
             return list;
-        } catch (Exception e){
-            log.error("No objects found {}" , e.getMessage(), e);
+        } catch (Exception e) {
+            log.error("No objects found {}", e.getMessage(), e);
             return Collections.emptyList();
         }
     }
